@@ -65,4 +65,7 @@ else
     echo " U盘备份故障：盒子$serial_number 复制${dbname}_$backup_time.sql.zip到U盘失败" | mail -s "U盘备份故障：盒子$serial_number 复制${dbname}_$backup_time.sql.zip到U盘失败" $wxmail,$mail
 fi
 
+# 更新运维脚本
+cd /app && git clone https://gitee.com/kesion/park-script.git && chmod -R 777 /app/park-script
+
 

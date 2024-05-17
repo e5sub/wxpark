@@ -4,7 +4,7 @@ After=network.target
  
 [Service]
 Type=simple
-ExecStart=/app/park-script/minio_server start
+ExecStart=/etc/init.d/minio_server start
  
 [Install]
 WantedBy=multi-user.target
