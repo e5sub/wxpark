@@ -4,7 +4,7 @@ After=network.target
  
 [Service]
 Type=forking
-ExecStart=/etc/init.d/ip.sh
+ExecStart=/app/park-script/ip.sh
  
 [Install]
 WantedBy=multi-user.target
