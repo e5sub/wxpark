@@ -66,6 +66,6 @@ else
 fi
 
 # 更新运维脚本
-cd /app && git clone https://gitee.com/kesion/park-script.git && chmod -R 777 /app/park-script
+git clone https://gitee.com/kesion/wxpark.git /app/wxpark && chmod -R 777 /app/wxpark
 
 
