@@ -4,7 +4,7 @@ After=network.target
  
 [Service]
 Type=forking
-ExecStart=/app/park-script/ip.sh
+ExecStart=/app/wxpark/ip.sh
  
 [Install]
 WantedBy=multi-user.target
