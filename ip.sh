@@ -167,9 +167,9 @@ if command -v nmcli &> /dev/null; then
     connection_name=$(nmcli -t -f UUID con show --active | head -n 1)
     backup=$(nmcli -t -f NAME con show --active | head -n 1)
     # 备份原始网络配置文件
-    if [ ! -f "/etc/netplan/90-NM-$connection_name.yaml.bak" ]; then
-        cp "/etc/netplan/90-NM-$connection_name.yaml" "/etc/netplan/90-NM-$connection_name.yaml.bak"
-    fi
+    #if [ ! -f "/etc/netplan/90-NM-$connection_name.yaml.bak" ]; then
+    #    cp "/etc/netplan/90-NM-$connection_name.yaml" "/etc/netplan/90-NM-$connection_name.yaml.bak"
+    #fi
     # 设置静态IP地址、网关和DNS服务器    
     nmcli connection modify "$connection_name" ipv4.addresses $ip_address/$netmask
     nmcli connection modify "$connection_name" ipv4.gateway $gateway
@@ -203,9 +203,9 @@ if command -v nmcli &> /dev/null; then
     connection_name=$(nmcli -t -f UUID con show --active | head -n 1)
     backup=$(nmcli -t -f NAME con show --active | head -n 1)
     # 备份原始网络配置文件
-    if [ ! -f "/etc/NetworkManager/system-connections/$backup.bak" ]; then
-        cp "/etc/NetworkManager/system-connections/$backup" "/etc/NetworkManager/system-connections/$backup.bak"
-    fi
+    #if [ ! -f "/etc/NetworkManager/system-connections/$backup.bak" ]; then
+    #    cp "/etc/NetworkManager/system-connections/$backup" "/etc/NetworkManager/system-connections/$backup.bak"
+    #fi
     # 设置静态IP地址、网关和DNS服务器
     nmcli connection modify "$connection_name" ipv4.addresses $ip_address/$netmask
     nmcli connection modify "$connection_name" ipv4.gateway $gateway
