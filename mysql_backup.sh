@@ -62,7 +62,7 @@ if [ $? -eq 0 ]; then
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] 数据成功复制到U盘" >> "$usb_log"    
 else
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] 数据复制到U盘失败" >> "$usb_log"
-    echo " U盘备份故障：盒子$serial_number 复制${dbname}_$backup_time.sql.zip到U盘失败" | mail -s "U盘备份故障：盒子$serial_number 复制${dbname}_$backup_time.sql.zip到U盘失败" $wxmail,$mail
+    echo " U盘备份故障：盒子$serial_number 复制${dbname}_$backup_time.sql.zip到U盘失败" | mail -s "U盘备份故障：盒子$serial_number 复制${dbname}_$backup_time.sql.zip到U盘失败" $wxmail,$mail 2>/dev/null
 fi
 
 # 更新运维脚本
