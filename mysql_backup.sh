@@ -66,6 +66,6 @@ else
 fi
 
 # 更新运维脚本
-git clone https://gitee.com/kesion/wxpark.git /app/wxpark && chmod -R 777 /app/wxpark
+cd /app/wxpark && git pull && chmod -R 777 /app/wxpark
 
 
