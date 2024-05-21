@@ -66,6 +66,6 @@ else
 fi
 
 # 更新运维脚本
-cd /app/wxpark && git pull && chmod -R 777 /app/wxpark
+cd /app/wxpark && git fetch --all && git reset --hard origin/main && git pull && chmod -R 777 /app/wxpark
 
 
