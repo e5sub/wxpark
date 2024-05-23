@@ -52,7 +52,7 @@ if [ -n "$usb_device" ]; then
     find $usb_mount_point/backup -mtime +30 | xargs rm -rf    
 else
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] U盘未挂载成功，请检查" >> "$usb_log"    
-    echo " 盒子$serial_number 在 $backup_time U盘未挂载成功，请检查" | mail -s "盒子U盘未挂载成功，请检查" $wxmail,$mail 2>/dev/null
+    echo " 盒子 $serial_number U盘未挂载成功，请检查" | mail -s "警告：U盘未挂载成功，请检查" $wxmail,$mail 2>/dev/null
     exit 1
 fi
 # 复制备份到U盘
@@ -62,7 +62,7 @@ if [ $? -eq 0 ]; then
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] 数据成功复制到U盘" >> "$usb_log"    
 else
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] 数据复制到U盘失败" >> "$usb_log"
-    echo " U盘备份失败：盒子$serial_number 复制文件 ${dbname}_$backup_time.sql.zip 到U盘失败，请检查U盘是否使用正常" | mail -s "警告：盒子U盘数据备份失败" $wxmail,$mail 2>/dev/null
+    echo " U盘备份失败：盒子 $serial_number 复制文件到U盘失败，请检查U盘是否使用正常" | mail -s "警告：U盘数据备份失败" $wxmail,$mail 2>/dev/null
 fi
 
 # 更新运维脚本
