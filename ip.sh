@@ -1,7 +1,7 @@
 #!/bin/bash
 echo -e "# ******************************************************"
 echo -e "#                                                      "
-echo -e "# *脚本更新时间：2024年5月30日       脚本作者：萌萌哒菜芽  "
+echo -e "# *脚本更新时间：2024年6月13日       脚本作者：萌萌哒菜芽  "
 echo -e "#                                                      "
 echo -e "# *脚本支持CentOS/Ubuntu/Debian系统"
 echo -e "#                                                      "
@@ -272,3 +272,5 @@ check_ping_and_restore() {
     fi
 }
 check_ping_and_restore
+# 启动minio
+cd /usr/local/minio && sh minio_server start
