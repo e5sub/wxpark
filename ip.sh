@@ -1,7 +1,7 @@
 #!/bin/bash
 echo -e "# ******************************************************"
 echo -e "#                                                      "
-echo -e "# *脚本更新时间：2024年6月13日       脚本作者：萌萌哒菜芽  "
+echo -e "# *脚本更新时间：2024年6月18日       脚本作者：萌萌哒菜芽  "
 echo -e "#                                                      "
 echo -e "# *脚本支持CentOS/Ubuntu/Debian系统"
 echo -e "#                                                      "
@@ -18,9 +18,9 @@ exec 2>&1
 sleep 30s
 # 获取外网访问地址
 domain=$(grep -oP 'subdomain\s*=\s*"\K[^"]*' /opt/frpc/frpc.toml).nat.q-clouds.com:7080
-    # 读取主板SN序列号
-    serial_number=$(dmidecode -t baseboard | grep "Serial Number" | awk '{print $3}')
-    system_serial_number=$(dmidecode -s system-serial-number)
+    # 读取硬盘序列号
+    serial_number=$(hdparm -i /dev/sda | awk -F= '/SerialNo/{print $4}' | cut -d' ' -f1)
+    #system_serial_number=$(dmidecode -s system-serial-number)
     # 获取网卡名称和检测网络连接
     interface=$(ip route show | grep -i 'default via' | awk '{print $5; exit}')
     if [ -z "$interface" ]; then
@@ -158,8 +158,7 @@ cat <<EOL > /home/wxadmin/桌面/园租宝系统访问地址.txt
 外地用户浏览器访问：http://$domain
 登录用户名：admin
 登录密码：wx@2024!
-主板SN：$serial_number
-盒子SN：$system_serial_number
+硬盘序列号：$serial_number
 EOL
 elif [ -f /etc/lsb-release ]; then
     echo "检测到系统为Ubuntu"
@@ -194,8 +193,7 @@ cat <<EOL > /home/wxadmin/桌面/园租宝系统访问地址.txt
 外地用户浏览器访问：http://$domain
 登录用户名：admin
 登录密码：wx@2024!
-主板SN：$serial_number
-盒子SN：$system_serial_number
+硬盘序列号：$serial_number
 EOL
 elif [ -f /etc/debian_version ]; then
     echo "检测到系统为Debian"
@@ -236,8 +234,7 @@ cat <<EOL > /home/wxadmin/桌面/园租宝系统访问地址.txt
 外地用户浏览器访问：http://$domain
 登录用户名：admin
 登录密码：wx@2024!
-主板SN：$serial_number
-盒子SN：$system_serial_number
+硬盘序列号：$serial_number
 EOL
 else
     echo "不支持的操作系统"
