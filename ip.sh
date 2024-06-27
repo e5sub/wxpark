@@ -1,7 +1,7 @@
 #!/bin/bash
 echo -e "# ******************************************************"
 echo -e "#                                                      "
-echo -e "# *脚本更新时间：2024年6月18日       脚本作者：萌萌哒菜芽  "
+echo -e "# *脚本更新时间：2024年6月27日       脚本作者：萌萌哒菜芽  "
 echo -e "#                                                      "
 echo -e "# *脚本支持CentOS/Ubuntu/Debian系统"
 echo -e "#                                                      "
@@ -155,7 +155,6 @@ if [ -f /etc/redhat-release ]; then
    # 将访问信息保存到wxadmin桌面
 cat <<EOL > /home/wxadmin/桌面/园租宝系统访问地址.txt
 本地用户浏览器访问：http://$ip_address
-外地用户浏览器访问：http://$domain
 登录用户名：admin
 登录密码：wx@2024!
 硬盘序列号：$serial_number
@@ -190,7 +189,6 @@ fi
 # 将访问信息保存到wxadmin桌面
 cat <<EOL > /home/wxadmin/桌面/园租宝系统访问地址.txt
 本地用户浏览器访问：http://$ip_address
-外地用户浏览器访问：http://$domain
 登录用户名：admin
 登录密码：wx@2024!
 硬盘序列号：$serial_number
@@ -231,7 +229,6 @@ fi
 # 将访问信息保存到wxadmin桌面
 cat <<EOL > /home/wxadmin/桌面/园租宝系统访问地址.txt
 本地用户浏览器访问：http://$ip_address
-外地用户浏览器访问：http://$domain
 登录用户名：admin
 登录密码：wx@2024!
 硬盘序列号：$serial_number
