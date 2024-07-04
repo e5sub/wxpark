@@ -20,7 +20,7 @@ sleep 30s
 domain=$(grep -oP 'subdomain\s*=\s*"\K[^"]*' /opt/frpc/frpc.toml).nat.q-clouds.com:7080
     # 读取硬盘序列号
     #serial_number=$(hdparm -i /dev/sda | awk -F= '/SerialNo/{print $4}' | cut -d' ' -f1)
-    serial_number=$(lsblk -o NAME,SERIAL | awk '$2 != "" && NR > 1 && !disk_found { disk_found=1; print $2 }')
+    serial_number=$(lsblk -bno NAME,SIZE | awk '$2 > 400*1024*1024*1024 {print $1; exit}' | xargs -I {} lsblk -o NAME,SERIAL --node /dev/{} | awk '$2 != "" && NR > 1 && !disk_found { disk_found=1; print $2; exit }')
     #system_serial_number=$(dmidecode -s system-serial-number)
     # 获取网卡名称和检测网络连接
     interface=$(ip route show | grep -i 'default via' | awk '{print $5; exit}')
