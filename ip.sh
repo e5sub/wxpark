@@ -1,7 +1,7 @@
 #!/bin/bash
 echo -e "# ******************************************************"
 echo -e "#                                                      "
-echo -e "# *脚本更新时间：2024年6月27日       脚本作者：萌萌哒菜芽  "
+echo -e "# *脚本更新时间：2024年7月4日       脚本作者：萌萌哒菜芽  "
 echo -e "#                                                      "
 echo -e "# *脚本支持CentOS/Ubuntu/Debian系统"
 echo -e "#                                                      "
@@ -19,7 +19,8 @@ sleep 30s
 # 获取外网访问地址
 domain=$(grep -oP 'subdomain\s*=\s*"\K[^"]*' /opt/frpc/frpc.toml).nat.q-clouds.com:7080
     # 读取硬盘序列号
-    serial_number=$(hdparm -i /dev/sda | awk -F= '/SerialNo/{print $4}' | cut -d' ' -f1)
+    #serial_number=$(hdparm -i /dev/sda | awk -F= '/SerialNo/{print $4}' | cut -d' ' -f1)
+    serial_number=$(lsblk -o NAME,SERIAL | awk '$2 != "" && NR > 1 && !disk_found { disk_found=1; print $2 }')
     #system_serial_number=$(dmidecode -s system-serial-number)
     # 获取网卡名称和检测网络连接
     interface=$(ip route show | grep -i 'default via' | awk '{print $5; exit}')
